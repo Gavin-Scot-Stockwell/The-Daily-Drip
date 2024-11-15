@@ -1,27 +1,27 @@
 #newDay {
-border: black 10px solid;
-}
-
-#container{
-border: aqua 10px dotted;
-}
-
-#diary{
-border: blue 10px solid;
-}
-
-#stats{
-border: brown 10px solid;
-}
-
-#waterIntake{
-border: pink 10px solid;
-}
-
-#date{
-border: green 10px solid;
-}
-
-#avg{
-border: lavender 10px solid;
-}
+    border: black 10px solid;
+    }
+    
+    #container{
+    border: aqua 10px dotted;
+    }
+    
+    .diary{
+    border: blue 10px solid;
+    }
+    
+    .stats{
+    border: brown 10px solid;
+    }
+    
+    .waterIntake{
+    border: pink 10px solid;
+    }
+    
+    .date{
+    border: green 10px solid;
+    }
+    
+    .avg{
+    border: lavender 10px solid;
+    }
