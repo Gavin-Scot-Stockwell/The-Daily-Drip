@@ -122,6 +122,7 @@ function renderEnteries(){
         diarySectionEl.classList.add('diaryText')
         
 
+
         container.appendChild(entryWrapperEl)
         diarySectionEl.appendChild(diaryImageEl)
         diarySectionEl.appendChild(diaryTextEl)
