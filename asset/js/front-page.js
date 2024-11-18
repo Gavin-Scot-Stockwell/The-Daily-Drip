@@ -5,8 +5,18 @@ const submit = document.querySelector('#submit')
 const diaryText = document.querySelectorAll('.diaryText');//How to select the input for dairyText
 let diaryArray = [];
 
-
-
+const images = [
+    './asset/css/images/water1.png',
+    './asset/css/images/water2.png',
+    './asset/css/images/water3.png',
+    './asset/css/images/water4.png',
+    './asset/css/images/water5.png',
+];  
+function getRandomImage(){
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images[randomIndex];
+}
+getRandomImage();
 
 document.getElementById('add').addEventListener('click', function(event) {
    
@@ -16,6 +26,22 @@ document.getElementById('add').addEventListener('click', function(event) {
 
         const entryWrapperEl = document.createElement('div')
         entryWrapperEl.classList.add('entry-wrapper')
+
+
+        //created the variable for the imageContainerEl
+        const imageContainerEl = document.createElement('div');
+        imageContainerEl.classList.add('image-container');
+
+          // add 5 random images
+          for (let i = 0; i < 1; i++) {
+            const imageEl = document.createElement('img');
+            imageEl.src = getRandomImage();
+            imageEl.classList.add('water-image');
+            imageEl.setAttribute('data-number', i);
+            imageContainerEl.appendChild(imageEl);
+        }
+        entryWrapperEl.appendChild(imageContainerEl);
+
         //diary section
         const diarySectionEl = document.createElement('section')
         entryWrapperEl.appendChild(diarySectionEl)
