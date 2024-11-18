@@ -27,24 +27,29 @@ function getRandomImage(){
 }
 //HERE NOW
 
+function tailStyle(id, Class){
+    for(let i = 0; i < Class.length; i++){
+        id.classList.add(Class[i]);}};
 
+const diaryDivStyle = ["flex","flex-col","justify-between", "items-center", "justify-center", "p-6", "gap-6", "border-4", "border-white", "rounded-md"]; 
+const diarySectionStyle = ["flex", "flex-col","sm:flex-row","gap-8", "w-full", "items-center", "justify-center"];
+const diaryImageStyle = ["block","sm:w-[220px]", "w-full", "h-[220px]", "m-4", "object-cover", "border-2", "border-black", "shadow-lg","rounded-lg"];
+const diaryTextStyle = ["flex","flex-col","w-full","min-h-[250px]", "p-6","border-2","border-black","rounded-lg","bg-white", "shadow-lg", "focus:outline-none","focus:ring-2", "focus:ring-indigo-500"];
+const statsSectionStyle = ["flex","flex-col","sm:flex-row","gap-6","p-6", "w-full", "items-center", "justify-center"];
+const waterIntakeStyle = ["flex","flex-col","items-center","space-y-4","w-full", "max-w-md","h-auto","rounded-lg", "p-4", "bg-white", "shadow-lg", "rounded-lg"]
+const waterInputStyle = ["w-full","py-2","border-2","border-black","rounded-md","focus:outline-none", "focus:ring-2","focus:ring-indigo-500", "items-center", "bg-white"]
+const dateInputStyle = ["w-full", "px-4", "py-2", "border-2", "border-black", "rounded-md", "focus:outline-none", ",focus:ring-2", "focus:ring-indigo-500"]
+const dateElStyle = ["flex","flex-col","items-center","space-y-4","w-full", "max-w-md","h-auto","rounded-lg", "p-4", "bg-white", "shadow-lg", "rounded-lg"];
 
 document.getElementById('add').addEventListener('click', function(event) {
-   
-
-    // preventing defualt
     
-
-        
-
+    // preventing defualt
     
         const entryWrapperEl = document.createElement('div')//most out for diary
         entryWrapperEl.classList.add('entry-wrapper')
         
         //created the variable for the imageContainerEl
         const imageContainerEl = document.createElement('div');//HERE NOW
-        
-        
         
         //diary section
         const diarySectionEl = document.createElement('section')// inside the entry wrapper div
@@ -56,7 +61,7 @@ document.getElementById('add').addEventListener('click', function(event) {
         diaryTextEl.classList.add('diaryInput')
         diarySectionEl.classList.add('diaryText')
         diaryImageEl.src = getRandomImage();//HERE NOW
-        
+
         container.appendChild(entryWrapperEl)
         diarySectionEl.appendChild(diaryImageEl)
         diarySectionEl.appendChild(diaryTextEl)
@@ -77,20 +82,29 @@ document.getElementById('add').addEventListener('click', function(event) {
         dateEl.classList.add('date')
         const dateInput = document.createElement('input')
         dateInput.classList.add('dateInput')
-        dateInput.setAttribute('type', 'text')
+        dateInput.type = ('date');
         dateEl.appendChild(dateInput)
         dateEl.append('DATE')
-    
 
         entryWrapperEl.appendChild(statsSectionEl)
         statsSectionEl.appendChild(waterIntakeEl)
         statsSectionEl.appendChild(dateEl)
     
-        
+      //JS TAIL CSS
+      tailStyle(entryWrapperEl, diaryDivStyle) 
+      tailStyle(diarySectionEl, diarySectionStyle)
+      tailStyle(diaryImageEl, diaryImageStyle) 
+      tailStyle(diaryTextEl, diaryTextStyle) 
+      tailStyle(statsSectionEl, statsSectionStyle) 
+      tailStyle(waterIntakeEl, waterIntakeStyle)
+      tailStyle(waterIntakeInput, waterInputStyle)
+      tailStyle(dateInput, dateInputStyle)
+      tailStyle(dateEl, dateElStyle)
+
+      diaryTextEl.setAttribute('placeholder', 'Enter your diary entry here...');
         
     //create a new entry
     
-    tailStyle(diarySectionEl,styleTest);
     avgText.textContent =  waterAvg +'L';
 });
 
@@ -117,7 +131,6 @@ document.getElementById('submit').addEventListener
     localStorage.setItem('entries', JSON.stringify(entriesToStore))
     location.reload(true);//newAVG
 });
-
 
 function renderEnteries(){
     const storeEnteries = JSON.parse(localStorage.getItem('entries'))
@@ -187,15 +200,27 @@ function renderEnteries(){
         console.log('Water Avg total is ' + waterAvg);//TOTAL AVG OF WATER
         console.log('waterSum '+ waterSum)
         console.log('The water amounts of each days are '+ waterArray);
-            
-        tailStyle(diarySectionEl,styleTest);
+
 
         avgText.textContent =  waterAvg +'L';//newAVG
         if(waterAmount.length === 1){
-            drank.textContent = 'Comeback tomarrow! You only got one day!';//newAVG
+            drank.textContent = 'Come back tomorrow! You have completed one day!';//newAVG
 
         } else 
         {drank.textContent = 'You recorded your water intake ' + waterAmount.length + ' times!';}//newAVG
+   
+        //JS TAIL CSS
+        tailStyle(entryWrapperEl, diaryDivStyle) //DIV
+        tailStyle(diarySectionEl, diarySectionStyle) //SECTION
+        tailStyle(diaryImageEl, diaryImageStyle) // DIARY IMG
+        tailStyle(diaryTextEl, diaryTextStyle) // DIARY TEXT AREA
+        tailStyle(statsSectionEl, statsSectionStyle) //
+        tailStyle(waterIntakeEl, waterIntakeStyle)
+        tailStyle(waterIntakeInput, waterInputStyle)
+        tailStyle(dateInput, dateInputStyle)
+        tailStyle(dateEl, dateElStyle)
+
+        diaryTextEl.setAttribute('placeholder', 'Enter your diary entry here...');
     }
 }
 renderEnteries();
