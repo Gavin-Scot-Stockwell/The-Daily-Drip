@@ -3,8 +3,30 @@ const container = document.querySelector('#container');
 const add = document.querySelector('#add');
 const submit = document.querySelector('#submit')
 const diaryText = document.querySelectorAll('.diaryText');//How to select the input for dairyText
-let diaryArray = [];
+const avgText = document.querySelector('#avgText');//newAVG
+const drank = document.querySelector('#drank');
 
+
+function tailStyle(id,Class){   
+    for(let i = 0; i < Class.length; i++){
+        id.classList.add(Class[i]);}};
+
+styleTest = ["bg-blue-600","border-4","border-black"];
+
+
+//HERE NOW
+const images = [
+    './asset/css/images/water1.png',
+    './asset/css/images/water2.png',
+    './asset/css/images/water3.png',
+    './asset/css/images/water4.png',
+    './asset/css/images/water5.png',
+];  
+function getRandomImage(){
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images[randomIndex];
+}
+//HERE NOW
 
 
 
@@ -12,12 +34,21 @@ document.getElementById('add').addEventListener('click', function(event) {
    
 
     // preventing defualt
-    event.preventDefault();
+    
 
-        const entryWrapperEl = document.createElement('div')
+        
+
+    
+        const entryWrapperEl = document.createElement('div')//most out for diary
         entryWrapperEl.classList.add('entry-wrapper')
+        
+        //created the variable for the imageContainerEl
+        const imageContainerEl = document.createElement('div');//HERE NOW
+        
+        
+        
         //diary section
-        const diarySectionEl = document.createElement('section')
+        const diarySectionEl = document.createElement('section')// inside the entry wrapper div
         entryWrapperEl.appendChild(diarySectionEl)
         diarySectionEl.classList.add('diary')
         const diaryImageEl = document.createElement('img')
@@ -25,6 +56,7 @@ document.getElementById('add').addEventListener('click', function(event) {
         const diaryTextEl = document.createElement('textarea')
         diaryTextEl.classList.add('diaryInput')
         diarySectionEl.classList.add('diaryText')
+        diaryImageEl.src = getRandomImage();//HERE NOW
         
         container.appendChild(entryWrapperEl)
         diarySectionEl.appendChild(diaryImageEl)
@@ -50,30 +82,22 @@ document.getElementById('add').addEventListener('click', function(event) {
         dateEl.appendChild(dateInput)
         dateEl.append('DATE')
     
-        const avgEl = document.createElement('div')
-        avgEl.classList.add('avg')
-        const avgP = document.createElement('p')
-        avgP.textContent = 'Your Avg'
-        avgEl.appendChild(avgP)
 
         entryWrapperEl.appendChild(statsSectionEl)
-    
         statsSectionEl.appendChild(waterIntakeEl)
         statsSectionEl.appendChild(dateEl)
-        statsSectionEl.appendChild(avgEl)
     
         
-
+        
     //create a new entry
-
+    
+    tailStyle(diarySectionEl,styleTest);
+    avgText.textContent =  waterAvg +'L';
 });
 
 document.getElementById('submit').addEventListener
 ('click', function(event) {
-    //entry-wrapper
-    //diaryInput
-    //waterIntake
-    //dateInput
+
     const allEntries = (document.querySelectorAll('.entry-wrapper'))
     const allDiaries = document.querySelectorAll('.diaryInput')
     const allWaters = document.querySelectorAll('.waterInput')
@@ -92,11 +116,7 @@ document.getElementById('submit').addEventListener
     }
     console.log(entriesToStore)
     localStorage.setItem('entries', JSON.stringify(entriesToStore))
-
-    // localStorage.setItem('diarys', JSON.stringify(diaryText));
-    // JSON.stringify(localStorage.setItem('diarys',diaryText));
-
-    
+    location.reload(true);//newAVG
 });
 
 
@@ -115,9 +135,9 @@ function renderEnteries(){
         const diaryTextEl = document.createElement('textarea')
         diaryTextEl.value = storeEnteries[i].diary;//HERE CHANGE
         diaryTextEl.classList.add('diaryInput')
-        // diaryTextEl.setAttribute('data-number', i)
         diarySectionEl.classList.add('diaryText')
-        
+        diaryImageEl.src = getRandomImage();//HERE NOW
+
 
         container.appendChild(entryWrapperEl)
         diarySectionEl.appendChild(diaryImageEl)
@@ -126,13 +146,12 @@ function renderEnteries(){
         //stats section
         const statsSectionEl = document.createElement('section')
         statsSectionEl.classList.add('stats')
-    
         const waterIntakeEl = document.createElement('div')
         waterIntakeEl.classList.add('waterIntake')
         const waterIntakeInput = document.createElement('input')
         waterIntakeInput.classList.add('waterInput')
         waterIntakeInput.value = storeEnteries[i].water;//HERE CHANGE
-        // waterIntakeInput.setAttribute('data-number', i)
+
         waterIntakeInput.setAttribute('type', 'text')
         waterIntakeEl.appendChild(waterIntakeInput)
         waterIntakeEl.append('WATER INTAKE')
@@ -142,23 +161,15 @@ function renderEnteries(){
         const dateInput = document.createElement('input')
         dateInput.classList.add('dateInput')
         dateInput.value = storeEnteries[i].date;//HERE CHANGE
-        // dateInput.setAttribute('data-number', i)
+
         dateInput.setAttribute('type', 'text')
         dateEl.appendChild(dateInput)
         dateEl.append('DATE')
     
-        const avgEl = document.createElement('div')
-        avgEl.classList.add('avg')
-        const avgP = document.createElement('p')
-        avgP.textContent = 'Your Avg'
-        avgEl.appendChild(avgP)
-
         entryWrapperEl.appendChild(statsSectionEl)
-    
         statsSectionEl.appendChild(waterIntakeEl)
         statsSectionEl.appendChild(dateEl)
-        statsSectionEl.appendChild(avgEl)
-
+       
 
         //Avg total cal
         let waterAmount = JSON.parse(localStorage.getItem('entries'));
@@ -177,39 +188,17 @@ function renderEnteries(){
         console.log('Water Avg total is ' + waterAvg);//TOTAL AVG OF WATER
         console.log('waterSum '+ waterSum)
         console.log('The water amounts of each days are '+ waterArray);
-        
-        revwaterArray = waterArray.reverse()
-        selectWater = revwaterArray.slice();//putting into slices to add and make daily avg
-    
-        
-        let sumSlice = 0;//setting outside for daily avg
-        let sliceAvg = 0;
-        let outAvg =[];
-        console.log('============TOTAL============');
-    
-        for (let i = 0; i < selectWater.length; i++) {
             
-            
-            sumSlice += Number(selectWater[i]);
-            
-            sliceAvg = sumSlice/selectWater.length;
-            
-            outAvg.push(sliceAvg[i]) 
-        }
-        console.log('============SLICE '+ '^^^ '+ i + ' ^^^' +'============');
-        console.log("selectWater "+ selectWater);
-        console.log("sumSlice "+ sumSlice);
-        console.log("sliceAvg "+ sliceAvg);
-        
-        console.log("outAvg "+ outAvg)
+        tailStyle(diarySectionEl,styleTest);
 
+        avgText.textContent =  waterAvg +'L';//newAVG
+        if(waterAmount.length === 1){
+            drank.textContent = 'Comeback tomarrow! You only got one day!';//newAVG
+
+        } else 
+        {drank.textContent = 'You recorded your water intake ' + waterAmount.length + ' times!';}//newAVG
     }
-       
-   //use this to make arrays for each of the days
-   //then sum and make avg
-
 }
-
 renderEnteries();
 
 
