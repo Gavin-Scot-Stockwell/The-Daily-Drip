@@ -1,4 +1,3 @@
-//code+gaming = coolmathgames.com
 const container = document.querySelector('#container');
 const add = document.querySelector('#add');
 const submit = document.querySelector('#submit')
