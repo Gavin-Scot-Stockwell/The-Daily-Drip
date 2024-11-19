@@ -4,6 +4,7 @@ const submit = document.querySelector('#submit')
 const diaryText = document.querySelectorAll('.diaryText');//How to select the input for dairyText
 const avgText = document.querySelector('#avgText');//newAVG
 const drank = document.querySelector('#drank');
+const error = document.querySelector('#error');
 
 
 function tailStyle(id,Class){   
@@ -11,6 +12,12 @@ function tailStyle(id,Class){
         id.classList.add(Class[i]);}};
 
 styleTest = ["bg-blue-600","border-4","border-black"];
+
+function validateForm(diary, water, date) {
+    let isValid = true;
+    document.getElementById()
+
+}
 
 
 //HERE NOW
@@ -181,7 +188,7 @@ function renderEnteries(){
         entryWrapperEl.appendChild(statsSectionEl)
         statsSectionEl.appendChild(waterIntakeEl)
         statsSectionEl.appendChild(dateEl)
-       
+
 
         //Avg total cal
         let waterAmount = JSON.parse(localStorage.getItem('entries'));
@@ -219,10 +226,18 @@ function renderEnteries(){
         tailStyle(waterIntakeInput, waterInputStyle)
         tailStyle(dateInput, dateInputStyle)
         tailStyle(dateEl, dateElStyle)
-
-        diaryTextEl.setAttribute('placeholder', 'Enter your diary entry here...');
+   
+        diaryTextEl.setAttribute('placeholder', 'Please finish the entry..');
+        dateInput.setAttribute('placeholder', 'Please finish the entry..');
+        waterIntakeInput.setAttribute('placeholder', 'Please finish the entry..');
+   
     }
 }
+
 renderEnteries();
+
+
+
+
 
 
