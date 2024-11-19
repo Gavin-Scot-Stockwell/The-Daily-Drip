@@ -17,11 +17,13 @@ DIARY ENTRIES
 
 As you continue to fill out your diary, the past entries will be tracked on the page as well. 
 
-![alt text](<Daily Drip Img 3.png>)
 
-![alt text](<Daily Drip Img2.png>)
+![alt text](<./asset/css/images/Daily Drip Img 3.png>)
 
-![alt text](<Daily Drip Img1.png>)
+![alt text](<./asset/css/images/Daily Drip Img2.png>)
+
+![alt text](<./asset/css/images/Daily Drip Img1.png>)
+
 
 ## Contributers
 
@@ -32,6 +34,9 @@ As you continue to fill out your diary, the past entries will be tracked on the 
 - Samuel Herrick contributed the calculations of water intake averages.
 - Gavin Stockwell contributed local Storage and scripting CSS.
 
+## Link to Website
+
+https://gavin-scot-stockwell.github.io/The-Daily-Drip/
 
 ## License
 
