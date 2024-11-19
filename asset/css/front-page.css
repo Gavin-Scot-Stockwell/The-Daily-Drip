@@ -1,27 +1,40 @@
-#newDay {
-    border: black 10px solid;
+.side-image {
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    bottom: 0px;
+    transition: bottom .3s ease;
+    z-index: -1;
+    opacity: .5;
+}
+
+
+/* Custom animation for fade-in popup */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
     }
-    
-    #container{
-    border: aqua 10px dotted;
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
-    
-    .diary{
-    border: blue 10px solid;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  /* Bounce animation for avgText message */
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1);
     }
-    
-    .stats{
-    border: brown 10px solid;
+    50% {
+      transform: scale(1.05);
     }
-    
-    .waterIntake{
-    border: pink 10px solid;
-    }
-    
-    .date{
-    border: green 10px solid;
-    }
-    
-    .avg{
-    border: lavender 10px solid;
-    }
+  }
+
+  .bounce {
+    animation: bounce 1s ease-in-out infinite;
+  }

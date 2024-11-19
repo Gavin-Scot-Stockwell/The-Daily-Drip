@@ -6,37 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>The Daily Drip</title>
+  <link rel="stylesheet" href="./asset/css/reset.css" />
   <link rel="stylesheet" href="./asset/css/front-page.css" />
-  
 </head>
 
-<body>
-    <header>The Daily Drip</header>
+<body class="bg-blue-100">
+  <img src="./asset/css/images/waterfall.png" alt="an image of a transparent waterfall" class="side-image left">
+  <!-- HEADER -->
+  <header class="flex font-serif text-indigo-600 text-6xl bg-blue-300 text-left py-4 mt-8 mb-12 rounded-lg shadow-lg">
+    The Daily Drip
+  </header>
 
+  <!-- ADD NEW DAY -->
+  <section id="newDay" class="flex justify-center mb-8">
+    <button id="add" class="font-serif text-2xl p-[30px] hover:bg-blue-300 border-black border-4 text-center rounded-md w-64 mb-[30px] add px-4 py-2 bg-indigo-500 text-white rounded-md font-semibold hover:bg-indigo-600 transition duration-200">
+      NEW DAY
+    </button>
+  </section>
 
-    <section id = "newDay">
-    
-        <button id = "add"> Add New Day?</button>
-        <button id = "submit">Submit Today?</button>
-    
+  <!-- CLONED DIARY SECTION -->
+  <div id="clone" class="mb-8 border-[4px] border-black"></div>
+  <div class="mb-8 border-[4px] border-black"></div>
+
+  <!-- DIARY SECTION -->
+  <main id="container" class="font-serif m-auto flex flex-col justify-between items-center">
+    <!-- IMAGE APPEARS HERE -->
+    <section>
+      <div id="avg" class="flex flex-col items-center space-y-2 mb-6">
+        <p class="text-lg font-medium">Your Daily Average</p>
+        <p id="avgText" class="text-2xl font-semibold bounce">0.0L</p>
+        <p id="drank" class="font-serif avgText bg-indigo-500 text-white p-2 rounded-lg shadow-lg max-w-xs text-center fade-in fixed bottom-0">You haven't logged your water at all!</p>
+      </div>
+      
+      <!-- Submit Button -->
+      <div class="flex justify-center mt-6">
+        <button id="submit" class="font-serif text-2xl p-[10px] hover:bg-blue-300 border-black border-4 text-center rounded-md w-64 bg-indigo-500 text-white rounded-md font-semibold hover:bg-indigo-600 transition duration-200 mb-6">
+          SUBMIT
+        </button>
+      </div>
     </section>
+  </main>
 
-    <div id = "clone"></div>
-
-
-    <main  id = "container">
-    
-    </main> 
-    <div id ="avg" class ="flex flex-col items-center space-y-2">
-      <p class="text-lg font-medium">Your Daily Average</p>
-      <p id = "avgText"class="text-2xl font font-semibold">0.0L</p>
-      <p id = 'drank'>You haven't logged your water at all!</p>
-    </div>
-  
-  
   <script src="./asset/js/front-page.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </body>
-
 
 </html>
